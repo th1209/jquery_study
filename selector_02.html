@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>高度なDOM要素の指定</title>
+</head>
+<body>
+  <p>Hello, jQuery.</p>
+  <ul id="main">
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>
+        3
+        <ul class="sub">
+          <li>3-0</li>
+          <li>3-1</li>
+          <li class="item">3-2</li>
+          <li class="item">3-3</li>
+          <li class="item">3-4</li>
+          <li>3-5</li>
+        </ul>
+    </li>
+  </ul>
+
+  <p><a href="http://google.com">Google</a></p>
+  <p><a href="http://yahoo.co.jp">Yahoo!</a></p>
+  <p><a href="http://dotinstall.com">Dotinstall</a></p>
+
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script>
+    $(function() {
+      /**
+       * フィルタ
+       * ※配列のように指定し、0番目からはじまる。
+       */
+      // :eq()          n番目の要素に等しい
+      // :gt(), :lt()   より大きい、より小さい
+      // :even, :odd    偶数番、奇数番
+      // :first, :last  先頭、末尾
+      // :contains()    要素の値に、指定した文字列を含む
+
+      //$(".sub > li:eq(0)").css('color', 'red');
+      //$(".sub > li:gt(0)").css('color', 'red');
+      //$(".sub > li:last").css('color', 'red');
+      //$(".sub > li:even").css('color', 'red');
+      //$(".sub > li:contains('4')").css('color', 'red');
+
+
+      /**
+       * DOMを選択するメソッド
+       */
+       // parent(), children()
+       // next(), prev()
+       // siblings()           同階層の要素。自身の要素は含まない
+
+       //$(".sub > li:eq(1)").prev().css('color', 'blue');
+       //$(".sub > li:eq(2)").siblings().css('color', 'blue');
+
+       //補足:prev()やnext()は、同階層の要素がない場合は効かない(以下例だと、どの要素にも適用されず。)
+       //$(".sub > li:eq(0)").prev().css('color', 'blue');
+
+
+      /**
+       * 属性セレクタ
+       */
+       // =  と一致する
+       // != 以外
+       // *= を含む
+       // ^= からはじまる
+       // $= で終わる
+
+       //$("a[href!='http://yahoo.co.jp']").css('background', 'red');
+       //$("a[href*='com']").css('background', 'red');
+       //$("a[href$='jp']").css('background', 'red');
+    });
+  </script>
+</body>
+</html>

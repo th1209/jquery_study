@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery入門と、DOM要素の指定</title>
+</head>
+<body>
+  <p>Hello, jQuery.</p>
+  <ul id="main">
+    <li>0</li>
+    <li id="sub">1</li>
+    <li>2</li>
+    <li>
+      3
+      <ul>
+        <li>3-0</li>
+        <li>3-1</li>
+        <li class="item">3-2</li>
+        <li class="item">3-3</li>
+        <li class="item">3-4</li>
+        <li>3-5</li>
+      </ul>
+    </li>
+  </ul>
+
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script>
+    //セレクタ: 処理対象となるDOM要素を指定する記法
+    //メソッド: DOM要素に対する処理
+    $(document).ready(function() {
+          /**
+           * 基本的な要素の指定
+           */
+          //html要素に対する指定
+          $("p").css('color', 'red').hide('slow');
+          //idに対する指定
+          $("#sub").css('color', 'blue');
+          //classに対する指定
+          $(".item").css('color', 'green');
+
+          /**
+           * ちょっと高度な要素の指定
+           */
+          // '>' 直下の子要素
+          //$("#main > #sub").hide('slow');
+          // ' ' それ以下の要素(スペース)
+          //$("#main  .item").hide('slow');
+          // ',' 複数の要素
+          //$("#sub , .item").hide('slow');
+          // '+' 隣接する要素(以下の例だと、2個目以降のitemが消える)
+          //$(".item + .item").hide('slow');
+    });
+  </script>
+</body>
+</html>

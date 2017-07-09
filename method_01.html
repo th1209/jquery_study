@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>メソッドの基本</title>
+  <style>
+    .myStyle {
+        border: 5px solid green;
+        font-size: 48px;
+    }
+  </style>
+</head>
+<body>
+  <p>jQueryの練習</p>
+  <input type="text" value="hello">
+  <a href="http://google.com" data-sitename="google">Google</a>
+  <ul>
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ur>
+
+
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script>
+    /**
+     * 要素のクラスや属性を書き換える。
+     */
+    //addClass,removeClass: 動的に要素のclassを操作する。
+    //$('p').addClass('myStyle');
+
+    //attr: 要素の属性を取得したり、書き換えたりする。
+    //console.log($('a').attr('href'));
+    //$('a').attr('href', 'http://google.co.jp')
+
+    //data: html5で追加された、カスタム属性を取得したり、書き換えたりする。
+    //console.log($('a').data('sitename'));
+    //$('a').data('sitename', 'google.co.jp');
+
+    /**
+     * 要素の値などを書き換える。
+     */
+    //text: 要素のテキストを書き換える。
+    //$('p').text('jQueruの勉強...');
+    //html: 要素のテキストを書き換える(こちらはhtmlも記載OK)。
+    //$('p').html('<a href="">click here.</a>')
+    //empty: 要素の中身を消去する(タグは残る)。
+    //$('a').empty();
+    //remove: 要素を消去する(タグも消去)。
+    //$('a').remove();
+    //val: inputのvalueを取得したり、書き換える。
+    //$('input').val('hollo, world.');
+
+    /**
+     * 要素を挿入する
+     */
+    //var li = $('<li>').text('just added');
+
+    //before, after
+    //insertBefore, insertAfter
+    //$('ul > li:eq(1)').before(li);
+    //li.insertBefore($('ul > li:eq(1)'));
+
+    //prepend, append: 子要素の先頭と、末尾
+    //prependTo, appendTo
+    // $('ul').prepend(li);
+    // li.appendTo($('ul'))
+  </script>
+</body>
+</html>

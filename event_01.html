@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>イベントの基本</title>
+  <style>
+    #box {
+        width: 100px;
+        height: 100px;
+        background: blue;
+
+    }
+  </style>
+</head>
+<body>
+  <div id="box" style=" height;"></div>
+
+  <input type="text" id="name">
+  <select id="members" name="members">
+    <option>sato</option>
+    <option>tanaka</option>
+    <option>ito</option>
+  </select>
+
+  <button>add!</button>
+
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script>
+    /**
+     * 基本的なイベント
+     */
+    //click
+    $('#box').click(function(){
+      alert('click!');
+    });
+
+    //mouseover, mousemove, mouseout
+    $('#box')
+      .mouseover(function(){
+        $(this).css('background', 'green');
+      })
+      .mouseout(function(){
+        $(this).css('background', 'blue');
+      })
+      .mousemove(function(event){
+        $(this).text(event.pageX);
+      });
+
+    /**
+     * フォームに関するイベント
+     */
+    //focus, blur フォーカスが当たったときと、外れた時
+    $('#name')
+      .focus(function() {
+        $(this).css('background', 'red');
+      })
+      .blur(function() {
+        $(this).css('background', 'white')
+      });
+
+    //change selectの要素が変わった時
+    $('#members').change(function() {
+      alert('changed!');
+    });
+
+
+    /**
+     * 要素を動的に追加 & 削除する
+     */
+    $('button').click(function(){
+      var p = $('<p>').text('vanish!').addClass('vanish')
+      $(this).after(p);
+    });
+
+    //注意:
+    //以下の処理を呼んでも、.vanishクラスの要素は消去されない!
+    //ドキュメント読み込み時に、vanishクラスはまだ存在していないから。
+    $('.vanish').click(function(){
+      $(this).remove();
+    });
+
+    //なので、動的に生成した要素の操作は、onメソッドで行う。
+    $('body').on('click', '.vanish', (function(){
+      $(this).remove();
+    }));
+  </script>
+</body>
+</html>
